@@ -548,5 +548,24 @@ namespace tui_netcore
             setColorSchema(ColorSchema.Regular);
             return options[tmpCursor];
         }
+        public string DrawListGamerEdition(List<String> options, ColorSchema schema = ColorSchema.Regular)
+        {
+            Draw(schema);
+            setColorSchema(schema);
+            int Line = LastBodyHeight + MarginTop;
+            int tmpCursor = 0;
+            foreach (string s in options)
+            {
+                Console.SetCursorPosition(MarginLeft + PosLeft, Line);
+                System.Console.Write($" {s}");
+                Line++;
+            }
+
+            Line -= options.Count;
+
+            ConsoleKeyInfo keypress;
+            setColorSchema(ColorSchema.Regular);
+            return options[tmpCursor];
+        }
     }
 }
